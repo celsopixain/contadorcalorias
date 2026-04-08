@@ -3,6 +3,9 @@ import { useSearch } from './hooks/useSearch';
 import SearchPanel from './components/SearchPanel';
 import ResultList from './components/ResultList';
 import StatusMessage from './components/StatusMessage';
+import BenchmarkPanel from './components/BenchmarkPanel';
+
+const IS_DEV = import.meta.env.DEV;
 
 export default function App() {
   const { foods, status } = useFoods();
@@ -16,6 +19,7 @@ export default function App() {
     hasMore,
     loadMore,
     searched,
+    emptyAttempt,
   } = useSearch(foods);
 
   return (
@@ -89,6 +93,13 @@ export default function App() {
                 onClear={clear}
               />
 
+              {emptyAttempt && (
+                <StatusMessage
+                  type="warning"
+                  message="Digite um alimento antes de pesquisar."
+                />
+              )}
+
               {searched && totalResults === 0 && (
                 <StatusMessage
                   type="warning"
@@ -96,7 +107,7 @@ export default function App() {
                 />
               )}
 
-              {!searched && (
+              {!searched && !emptyAttempt && (
                 <p
                   className="py-8 text-center text-sm"
                   style={{ color: 'var(--color-muted)' }}
@@ -116,6 +127,9 @@ export default function App() {
             </div>
           )}
         </main>
+
+        {/* Benchmark panel — dev only */}
+        {IS_DEV && status === 'ready' && <BenchmarkPanel foods={foods} />}
 
         {/* Footer */}
         <footer
