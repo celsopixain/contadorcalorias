@@ -1,5 +1,7 @@
 # Contador de Calorias
 
+**🚀 Demo:** https://contador-calorias-chi.vercel.app
+
 App client-side de contagem de calorias baseado na base de dados oficial do USDA (MyPyramid Food Raw Data). Busca instantânea entre mais de 2.000 alimentos com suporte a wildcards e paginação incremental — sem backend, sem banco de dados remoto.
 
 ---
