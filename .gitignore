@@ -33,3 +33,6 @@ yarn-error.log*
 # Raw data (large files not needed in repo)
 *.xlsx
 *.zip
+
+# Claude Code internal
+.claude/
