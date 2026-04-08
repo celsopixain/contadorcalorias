@@ -36,3 +36,5 @@ yarn-error.log*
 
 # Claude Code internal
 .claude/
+
+.vercel
